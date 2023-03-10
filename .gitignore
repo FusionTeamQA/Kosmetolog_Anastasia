@@ -1,0 +1,8 @@
+*.log
+pyvenv.cfg
+bin
+lib
+bd
+back.py
+.Python
+.idea
