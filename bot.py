@@ -120,13 +120,12 @@ def get_text_messages(message):
     elif message.text == 'Посмотреть прайс💰':
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
         btn1 = types.KeyboardButton('Эстетическая косметология')
-        btn2 = types.KeyboardButtong('Лазерная эпиляция')
+        btn2 = types.KeyboardButton('Лазерная эпиляция')
         markup.add(btn1, btn2)
         bot.send_message(message.from_user.id, '⬇ В этом разделе ты можешь ознакомиться с '
                                                'актуальными ценами на услуги, для того что бы тебе удобнее было '
                                                'искать нужную услугу прайс разделён по категориям,'
-                                               'выбирай нужную и я пришлю тебе информацию', reply_markup=markup,
-                         parse_mode='HTML')
+                                               'выбирай нужную и я пришлю тебе информацию', reply_markup=markup, parse_mode='HTML')
 
     elif message.text == 'Эстетическая косметология':
         bot.send_photo(message.from_user.id, open('File/Estetic/photo_2023-03-06 11.39.09.jpeg', 'rb'))
