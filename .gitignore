@@ -2,7 +2,7 @@
 pyvenv.cfg
 bin
 lib
-bd
+*.bd
 back.py
 .Python
 .idea
