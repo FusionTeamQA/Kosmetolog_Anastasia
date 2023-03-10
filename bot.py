@@ -59,7 +59,6 @@ def start(message):
         print("Новый юзер добавлен в базу данных")
         conn.commit()
     else:
-        print("В боте:")
         print(message.from_user.username)
     conn.close()
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
