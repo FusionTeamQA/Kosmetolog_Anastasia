@@ -39,7 +39,7 @@ class User:
 
 @bot.message_handler(commands=['start'])  # стартовая команда
 def start(message):
-    conn = sqlite3.connect('bd/database.db')
+    conn = sqlite3.connect('bd/database2.db')
     cursor = conn.cursor()
     cursor.execute('''CREATE TABLE IF NOT EXISTS users(
             user_id INTEGER, 
