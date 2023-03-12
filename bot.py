@@ -10,7 +10,7 @@ import time
 from requests.exceptions import ConnectionError, ReadTimeout
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
-                    level=logging.DEBUG,
+                    level=logging.INFO,
                     filename='bot.log'
                     )
 bot = telebot.TeleBot(setting.token)
@@ -39,7 +39,7 @@ class User:
 
 @bot.message_handler(commands=['start'])  # стартовая команда
 def start(message):
-    conn = sqlite3.connect('bd/database2.db')
+    conn = sqlite3.connect('bd/database.db')
     cursor = conn.cursor()
     cursor.execute('''CREATE TABLE IF NOT EXISTS users(
             user_id INTEGER, 
@@ -58,8 +58,10 @@ def start(message):
         cursor.execute("INSERT INTO users VALUES(?,?,?,?,?);", USER_ID)
         print("Новый юзер добавлен в базу данных")
         conn.commit()
+        logging.info('Добавлен в базу' + message.chat.username)
     else:
         print(message.from_user.username)
+        logging.info('Зашел в бота' + message.chat.username)
     conn.close()
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
     btn1 = types.KeyboardButton("Записаться на услугу📆")
