@@ -56,13 +56,12 @@ def start(message):
         USER_ID = [message.from_user.id, message.from_user.first_name, message.from_user.last_name,
                    message.from_user.username, dt_string]
         cursor.execute("INSERT INTO users VALUES(?,?,?,?,?);", USER_ID)
-        print("Новый юзер добавлен в базу данных")
         conn.commit()
         logging.info('Добавлен в базу' + message.chat.username)
+        conn.close()
     else:
         print(message.from_user.username)
         logging.info('Зашел в бота' + message.chat.username)
-    conn.close()
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
     btn1 = types.KeyboardButton("Записаться на услугу📆")
     btn2 = types.KeyboardButton('Посмотреть прайс💰')
